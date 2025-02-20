@@ -1,0 +1,15 @@
+{
+    "name": "Test Generator Development",
+    "image": "mcr.microsoft.com/devcontainers/universal:latest",
+    "features": {
+        "docker-in-docker": "latest"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "./path-to-your-extension.vsix"  // Relative path to your .vsix file
+            ]
+        }
+    },
+    "postCreateCommand": "docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama && sleep 10 && docker exec -it ollama ollama pull codellama"
+}
